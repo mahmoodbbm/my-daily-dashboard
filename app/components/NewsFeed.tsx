@@ -2,6 +2,15 @@
 
 import React, { useState } from "react";
 
+const categories = [
+  "Technology",
+  "Business",
+  "Sports",
+  "Entertainment",
+  "Health",
+  "Science",
+];
+
 interface Article {
   title: string;
   description: string;
@@ -11,21 +20,43 @@ interface Article {
   author?: string; // Optional property example
 }
 
-const NewsFeed = () => {
-  const [articles, setArticles] = useState([]);
+const NewsFeed: React.FC = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
 
-  const fetchNews = async () => {
+  const fetchNews = async (category: string = "") => {
     setLoading(true);
-    const response = await fetch("/api/news");
-    const data = await response.json();
-    setArticles(data.articles || []);
-    setLoading(false);
+    try {
+      const newsServicePath = category
+        ? `/api/news?category=${category}`
+        : `/api/news`;
+      const response = await fetch(newsServicePath);
+      const data = await response.json();
+      setArticles(data.articles);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching news:", error);
+      setLoading(false);
+      // Handle error state
+    }
   };
 
   return (
     <div>
-      <button onClick={fetchNews} disabled={loading}>
+      <select
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
+        onBlur={(e) => fetchNews(e.target.value)}
+      >
+        <option value="">Select a category</option>
+        {categories.map((category, index) => (
+          <option key={index} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+      <button onClick={() => fetchNews(selectedCategory)} disabled={loading}>
         {loading ? "Loading..." : "Load News"}
       </button>
       {articles.length > 0 && (
