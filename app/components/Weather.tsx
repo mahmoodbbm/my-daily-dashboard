@@ -2,19 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-interface WeatherData {
-  main: {
-    temp: number;
-  };
-  name: string;
-  weather: [
-    {
-      description: string;
-      icon: string;
-    }
-  ];
-}
+import { WeatherData } from "@/common/types";
 
 const Weather = () => {
   const [city, setCity] = useState<string>("Sydney"); // Default city

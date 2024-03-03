@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Article } from "@/common/types";
 
 const categories = [
   "Technology",
@@ -10,15 +11,6 @@ const categories = [
   "Health",
   "Science",
 ];
-
-interface Article {
-  title: string;
-  description: string;
-  url: string;
-  urlToImage?: string; // Optional property example
-  publishedAt: string;
-  author?: string; // Optional property example
-}
 
 const NewsFeed: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);

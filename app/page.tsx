@@ -1,3 +1,4 @@
+import React from "react";
 import NewsFeed from "./components/NewsFeed";
 import Weather from "./components/Weather";
 
