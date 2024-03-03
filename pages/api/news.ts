@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Article } from "@/common/types";
+import { getQueryParam } from "@/common/utils";
 
 interface NewsApiResponse {
   status: string;
@@ -7,17 +8,28 @@ interface NewsApiResponse {
   articles: Article[];
 }
 
+interface QueryParams {
+  category?: string;
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<NewsApiResponse | { error: string }>
 ) {
-  const {
-    query: { category },
-  } = req;
+  const { category } = req.query as QueryParams;
+
   const apiKey = process.env.NEWSAPI_KEY;
+  if (!apiKey) {
+    console.error("NewsAPI API key is not set.");
+    res.status(500).json({ error: "Internal server error." });
+    return;
+  }
+
   const baseUrl = "https://newsapi.org/v2/top-headlines?country=au";
   const url = category
-    ? `${baseUrl}&category=${category}&apiKey=${apiKey}`
+    ? `${baseUrl}&category=${encodeURIComponent(
+        getQueryParam(category)
+      )}&apiKey=${apiKey}`
     : `${baseUrl}&apiKey=${apiKey}`;
 
   try {

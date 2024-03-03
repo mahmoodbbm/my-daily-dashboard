@@ -30,7 +30,6 @@ const NewsFeed: React.FC = () => {
     } catch (error) {
       console.error("Error fetching news:", error);
       setLoading(false);
-      // Handle error state
     }
   };
 

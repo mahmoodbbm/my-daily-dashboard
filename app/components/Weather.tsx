@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { WeatherData } from "@/common/types";
 
 const Weather = () => {
@@ -14,25 +13,14 @@ const Weather = () => {
     longitude?: number
   ) => {
     try {
-      const params =
+      let weatherServicePath = "/api/weather?";
+      weatherServicePath +=
         latitude && longitude
-          ? {
-              lat: latitude,
-              lon: longitude,
-              units: "metric",
-              appid: process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY,
-            }
-          : {
-              q: cityName,
-              units: "metric",
-              appid: process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY,
-            };
-
-      const response = await axios.get<WeatherData>(
-        "https://api.openweathermap.org/data/2.5/weather",
-        { params }
-      );
-      setWeather(response.data);
+          ? `latitude=${latitude}&longitude=${longitude}`
+          : `cityName=${cityName}`;
+      const response = await fetch(weatherServicePath);
+      const data = await response.json();
+      setWeather(data);
     } catch (error) {
       console.error(error);
       alert("Failed to fetch weather data. Please try again.");
