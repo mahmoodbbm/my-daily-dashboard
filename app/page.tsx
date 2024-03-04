@@ -72,17 +72,17 @@ export default function Home() {
             </p>
           </section>
           <section className="p-4 border-t border-gray-300 rounded">
-            <h2 className="font-semibold text-lg">Weather Widget</h2>
+            <h2 className="font-semibold text-lg mb-2">Weather Widget</h2>
             <Weather />
           </section>
           <section className="p-4 border-t border-gray-300 rounded">
-            <h2 className="font-semibold text-lg">Task Manager</h2>
+            <h2 className="font-semibold text-lg mb-2">Task Manager</h2>
             <TaskManager />
           </section>
         </div>
         <div className="w-full md:flex-1">
           <section className="p-4 border-l border-gray-300 rounded h-full">
-            <h2 className="font-semibold text-lg">News Feed</h2>
+            <h2 className="font-semibold text-lg mb-2">News Feed</h2>
             <NewsFeed />
           </section>
         </div>

@@ -36,6 +36,7 @@ const NewsFeed: React.FC = () => {
   return (
     <div>
       <select
+        className="appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
         onBlur={(e) => fetchNews(e.target.value)}
@@ -47,30 +48,39 @@ const NewsFeed: React.FC = () => {
           </option>
         ))}
       </select>
-      <button onClick={() => fetchNews(selectedCategory)} disabled={loading}>
+      <button
+        className="ml-2 flex-shrink-0 bg-indigo-500 hover:bg-indigo-700 border-indigo-500 hover:border-indigo-700 text-base border-4 text-white py-2 px-2 rounded"
+        onClick={() => fetchNews(selectedCategory)}
+        disabled={loading}
+      >
         {loading ? "Loading..." : "Load News"}
       </button>
       {articles.length > 0 && (
-        <div>
-          <h2>Top Headlines</h2>
+        <div className="flex flex-wrap justify-left mt-5">
           {articles.map((article: Article, index: number) => (
-            <div key={index}>
+            <div
+              key={index}
+              className="border border-gray-100 max-w-sm rounded overflow-hidden shadow-lg mt-5"
+            >
               {article.urlToImage && (
                 <img
+                  className="w-full"
                   src={article.urlToImage}
                   alt={article.title}
-                  style={{
-                    width: "100%",
-                    maxHeight: "200px",
-                    objectFit: "cover",
-                  }}
                 />
               )}
-              <h3>{article.title}</h3>
-              <p>{article.description}</p>
-              <a href={article.url} target="_blank" rel="noopener noreferrer">
-                Read more
-              </a>
+              <div className="px-6 py-4">
+                <h3 className="font-bold text-base mb-2">{article.title}</h3>
+                <p className="text-gray-700 text-base">{article.description}</p>
+                <a
+                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read more
+                </a>
+              </div>
             </div>
           ))}
         </div>
