@@ -45,7 +45,6 @@ const TaskManager = () => {
 
   return (
     <div>
-      <h2>Task Manager</h2>
       <input
         type="text"
         value={newTaskText}
