@@ -36,6 +36,7 @@ const NewsFeed: React.FC = () => {
   return (
     <div>
       <select
+        title="Select a news category"
         className="appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
@@ -49,6 +50,7 @@ const NewsFeed: React.FC = () => {
         ))}
       </select>
       <button
+        title="Load news"
         className="ml-2 flex-shrink-0 bg-indigo-500 hover:bg-indigo-700 border-indigo-500 hover:border-indigo-700 text-base border-4 text-white py-2 px-2 rounded"
         onClick={() => fetchNews(selectedCategory)}
         disabled={loading}
