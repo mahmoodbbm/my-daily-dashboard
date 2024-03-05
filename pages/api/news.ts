@@ -12,6 +12,7 @@ interface QueryParams {
   category?: string;
 }
 
+// Server-side service to fetch data from NewsAPI
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<NewsApiResponse | { error: string }>

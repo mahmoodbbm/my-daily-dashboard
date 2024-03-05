@@ -7,6 +7,7 @@ interface QueryParams {
   longitude?: string;
 }
 
+// Server-side service to fetch data from NewsAPI
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<WeatherData | { error: string }>

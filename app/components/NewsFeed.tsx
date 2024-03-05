@@ -23,8 +23,10 @@ const NewsFeed: React.FC = () => {
       const newsServicePath = category
         ? `/api/news?category=${category}`
         : `/api/news`;
+
       const response = await fetch(newsServicePath);
       const data = await response.json();
+
       setArticles(data.articles);
       setLoading(false);
     } catch (error) {

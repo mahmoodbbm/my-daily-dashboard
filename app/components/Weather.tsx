@@ -15,11 +15,14 @@ const Weather = () => {
   ) => {
     try {
       let weatherServicePath = "/api/weather?";
+
       weatherServicePath +=
         latitude && longitude
           ? `latitude=${latitude}&longitude=${longitude}`
           : `cityName=${cityName}`;
+
       const response = await fetch(weatherServicePath);
+
       const data = await response.json();
       setWeather(data);
     } catch (error) {

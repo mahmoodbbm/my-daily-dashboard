@@ -51,7 +51,7 @@ const TaskManager = () => {
   return (
     <div>
       {isVisible && (
-        <div className="w-96 p-4 bg-fuchsia-300 h-screen overflow-y-auto fixed top-4 right-4 shadow-[-10px_10px_0px_rgba(0,0,0,0.1)]">
+        <div className="lg:w-96 w-80 p-4 bg-fuchsia-300 h-screen overflow-y-auto fixed top-4 right-4 shadow-[-10px_10px_0px_rgba(0,0,0,0.1)]">
           <h2 className="font-bold text-lg mb-2">Task Manager</h2>
           <form onSubmit={(e) => addTask(e)} className="flex items-center">
             <input

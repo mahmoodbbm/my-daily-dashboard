@@ -7,9 +7,10 @@ export default function Home() {
   return (
     <main className="bg-white">
       <div className="m-0">
-        <div className="w-96 p-4 lg:fixed lg:left-0 lg:top-0">
-          {/* <!-- Left column content --> */}
+        <div className="lg:w-96 p-4 lg:fixed lg:left-0 lg:top-0">
+          {/* <!-- Left column --> */}
           <section className="px-4">
+            {/* <!-- Page top left title --> */}
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
               My Daily Dashboard
             </h1>
@@ -18,16 +19,17 @@ export default function Home() {
             </p>
           </section>
           <section className="my-4 p-4 rounded-xl bg-blue-50 hover:bg-blue-100 transition-all duration-300 ease-in-out">
+            {/* <!-- Weather widget --> */}
             <h2 className="font-bold text-lg mb-2">Weather Widget</h2>
             <Weather />
           </section>
         </div>
         <div className="flex-auto p-4 lg:ml-96">
-          {/* <!-- Middle column content --> */}
+          {/* <!-- News feed content --> */}
           <h2 className="font-bold text-lg mb-2">News Feed</h2>
           <NewsFeed />
         </div>
-        {/* <!-- Right column content --> */}
+        {/* <!-- Sticky task manager --> */}
         <TaskManager />
       </div>
     </main>
