@@ -2,6 +2,7 @@ import React from "react";
 import NewsFeed from "./components/NewsFeed";
 import Weather from "./components/Weather";
 import TaskManager from "./components/TaskManager";
+import DailyQuote from "./components/DailyQuote";
 
 export default function Home() {
   return (
@@ -22,6 +23,11 @@ export default function Home() {
             {/* <!-- Weather widget --> */}
             <h2 className="font-bold text-lg mb-2">Weather Widget</h2>
             <Weather />
+          </section>
+          <section className="my-4 p-4 rounded-xl bg-gray-100">
+            {/* <!-- Daily quotes --> */}
+            <h2 className="font-bold text-lg mb-2">Daily wisdom</h2>
+            <DailyQuote />
           </section>
         </div>
         <div className="flex-auto p-4 lg:ml-96">

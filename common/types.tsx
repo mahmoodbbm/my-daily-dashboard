@@ -19,3 +19,9 @@ export interface WeatherData {
     }
   ];
 }
+
+export type Quote = {
+  id: number;
+  text: string;
+  person: string;
+};
