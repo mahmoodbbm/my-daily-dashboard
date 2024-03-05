@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { WeatherData } from "@/common/types";
+import Image from "next/image";
 
 const Weather = () => {
   const [city, setCity] = useState<string>("Sydney"); // Default city
@@ -68,7 +69,13 @@ const Weather = () => {
           className="ml-1 flex-shrink-0 bg-indigo-500 hover:bg-indigo-700 border-indigo-500 hover:border-indigo-700 text-base border-4 text-white py-2 px-2 rounded"
           type="submit"
         >
-          Get Weather
+          <Image
+            className="invert"
+            src="/img/magnifying-glass.svg"
+            alt="Get weather"
+            width="24"
+            height="24"
+          />
         </button>
         <button
           title="Use my location"
@@ -76,25 +83,13 @@ const Weather = () => {
           type="button"
           onClick={fetchWeatherByLocation}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-            />
-          </svg>
+          <Image
+            className="invert"
+            src="/img/map-pin.svg"
+            alt="Use my location"
+            width="24"
+            height="24"
+          />
         </button>
       </form>
 
@@ -143,7 +138,7 @@ const Weather = () => {
           </div>
           <div className="w-full flex items-center">
             <img
-              className="border border-gray-300 shadow-xl"
+              className="bg-gradient-to-r from-blue-400 to-blue-300 rounded-xl shadow-xl"
               src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
               alt="Weather icon"
             />
