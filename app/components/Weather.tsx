@@ -34,6 +34,7 @@ const Weather = () => {
 
   useEffect(() => {
     fetchWeather(city);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // React to changes in the city state
 
   const handleSubmit = (event: React.FormEvent) => {
