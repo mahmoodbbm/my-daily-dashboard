@@ -1,10 +1,6 @@
-interface Task {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import { Task } from "@/common/types";
 
-class StorageService {
+export class StorageService {
   private storageKey: string;
 
   constructor(storageKey: string) {

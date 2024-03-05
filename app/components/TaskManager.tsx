@@ -84,6 +84,7 @@ const TaskManager = () => {
               >
                 <div className="flex items-start">
                   <input
+                    title="Finished"
                     id={`task-${task.id}`}
                     className="mr-2 mt-2"
                     type="checkbox"

@@ -20,6 +20,12 @@ export interface WeatherData {
   ];
 }
 
+export interface Task {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
 export type Quote = {
   id: number;
   text: string;
